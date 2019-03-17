@@ -1,114 +1,107 @@
-// Robot Car Movement by Arthur Wong
+
+//motor 1
+int enA = 10;
+int in1 = 9;
+int in2 = 8;
+
+//motor 2
+int enB = 4;
+int in3 = 6;
+int in4 = 5;
 
 
-#define pwm_1 4 //PIN DEFINE FOR PWM OR MOTOR SPEED
-#define dir_1 5 //DIRECTION OF THE MOTOR
-#define pwm_2 3
-#define dir_2 2
-#define pwm_3 7
-#define dir_3 6
-
-
-
-void setup() 
-{
-
-
-  pinMode(pwm_1, OUTPUT);
-  pinMode(dir_1, OUTPUT);
-  pinMode(pwm_2, OUTPUT);
-  pinMode(dir_2, OUTPUT);
-  pinMode(pwm_3, OUTPUT);
-  pinMode(dir_3, OUTPUT);
-  Serial.begin(9600);
-  //declare pins as INPUT/OUTPUT
-
-
-  }
+void setup() {
+pinMode(enA,OUTPUT);
+pinMode(enB,OUTPUT);
+pinMode(in1,OUTPUT);
+pinMode(in2,OUTPUT);
+pinMode(in3,OUTPUT);
+pinMode(in4,OUTPUT);
+pinMode(13,OUTPUT);
+}
 
 void loop() 
-
 {
-gerakdepan();
+
+Forward;
 delay(2000);
-berhenti();
-delay(1000);
-kanan();
-delay(1000);
-kiri();
-delay(1000);
-putarkanan();
-delay(1000);
-putarkiri();
-delay(1000);
-belakang();
-delay(1000);
+Reverse;
+delay(2000);
+Left;
+delay(2000);
+Right;
+delay(2000);
+
+ }
+
+
+
+void Left() {
+
+// turn on motor A
+digitalWrite(in1,1);
+digitalWrite(in2,0);
+analogWrite(enA,200);
+
+//turn on motor B
+digitalWrite(in3,1);
+digitalWrite(in4,0);
+analogWrite(enB,200);
 
 
 }
- void gerakdepan()
+
+void Stop()
 {
-  digitalWrite( dir_1,HIGH);
-  digitalWrite( dir_2,HIGH);
-  digitalWrite( dir_3,LOW);  
-  analogWrite(pwm_1,100);
-  analogWrite(pwm_2,0);
-  analogWrite(pwm_3,100);  
- }
- void berhenti()
+
+analogWrite(enA,0);
+analogWrite(enB,0);
+
+}
+
+void Forward()
 {
-  digitalWrite( dir_1,HIGH);
-  digitalWrite( dir_2,HIGH);
-  digitalWrite( dir_3,HIGH);  
-  analogWrite(pwm_1,0);
-  analogWrite(pwm_2,0);
-  analogWrite(pwm_3,0);  
- }
-  void kanan()
+// turn on motor A
+digitalWrite(in1,0);
+digitalWrite(in2,0);
+analogWrite(enA,250);
+
+//turn on motor B
+digitalWrite(in3,0);
+digitalWrite(in4,0);
+analogWrite(enB,250);
+
+}
+
+void Reverse()
 {
-  digitalWrite( dir_1,HIGH);
-  digitalWrite( dir_2,HIGH);
-  digitalWrite( dir_3,LOW);  
-  analogWrite(pwm_1,0);
-  analogWrite(pwm_2,80);
-  analogWrite(pwm_3,100);  
- }
-  void kiri()
-{
-  digitalWrite( dir_1,HIGH);
-  digitalWrite( dir_2,LOW);
-  digitalWrite( dir_3,HIGH);  
-  analogWrite(pwm_1,100);
-  analogWrite(pwm_2,80);
-  analogWrite(pwm_3,0);  
- }
-  void putarkanan()
-{
-  digitalWrite( dir_1,LOW);
-  digitalWrite( dir_2,LOW);
-  digitalWrite( dir_3,LOW);  
-  analogWrite(pwm_1,100);
-  analogWrite(pwm_2,100);
-  analogWrite(pwm_3,100);  
- }
-  void putarkiri()
-{
-  digitalWrite( dir_1,HIGH);
-  digitalWrite( dir_2,HIGH);
-  digitalWrite( dir_3,HIGH);  
-  analogWrite(pwm_1,100);
-  analogWrite(pwm_2,100);
-  analogWrite(pwm_3,100);  
- }
-  void belakang()
-{
-  digitalWrite( dir_1,LOW);
-  digitalWrite( dir_2,HIGH);
-  digitalWrite( dir_3,HIGH);  
-  analogWrite(pwm_1,100);
-  analogWrite(pwm_2,0);
-  analogWrite(pwm_3,100);  
- }
-    
-    
-   
+// turn on motor A
+digitalWrite(in1,1);
+digitalWrite(in2,1);
+analogWrite(enA,210);
+
+//turn on motor B
+digitalWrite(in3,1);
+digitalWrite(in4,1);
+analogWrite(enB,210);
+
+}
+
+void Right() {
+
+// turn on motor A
+digitalWrite(in1,0);
+digitalWrite(in2,0);
+analogWrite(enA,200);
+
+//turn on motor B
+digitalWrite(in3,0);
+digitalWrite(in4,0);
+analogWrite(enB,200);
+
+
+}
+
+
+
+
